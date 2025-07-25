@@ -8,6 +8,8 @@ class AuthProvider with ChangeNotifier {
 
   // Ici, tu pourrais charger les utilisateurs depuis SQLite ou Firebase
   Future<void> login(String username, String password) async {
+    final cleanedUsername = username.trim();
+    final cleanedPassword = password.trim();
     // Exemple simple : identifiants fixes
     if (username == 'admin' && password == 'password') {
       _isLoggedIn = true;

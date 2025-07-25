@@ -33,9 +33,9 @@ class ClientListScreen extends StatelessWidget {
                       children: [
                         Text("Téléphone : ${client.telephone}"),
                         Text(
-                            "Entrée : ${DateUtils.DateUtils.format(client.dateEntree)}"), // ✅ Utilisation avec préfixe
+                            "Entrée : ${DateUtils.DateUtils.format(client.date_entree)}"), // ✅ Utilisation avec préfixe
                         Text(
-                            "Sortie : ${DateUtils.DateUtils.format(client.dateSortie)}"), // ✅
+                            "Sortie : ${DateUtils.DateUtils.format(client.date_sortie)}"), // ✅
                       ],
                     ),
                   ),

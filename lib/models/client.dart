@@ -1,9 +1,12 @@
+// models/client.dart
+import 'dart:typed_data';
+
 class Client {
   final int? id;
   final String nom;
   final String prenoms;
-  final DateTime naissanceDate;
-  final String naissanceLieu;
+  final DateTime naissance_date;
+  final String naissance_lieu;
   final String pere;
   final String mere;
   final String profession;
@@ -11,55 +14,56 @@ class Client {
   final String adresse;
   final String telephone;
   final String nationalite;
-  final String pieceType;
-  final String pieceNumero;
-  final DateTime pieceDelivranceDate;
-  final String pieceDelivranceLieu;
-  final String photoRecto;
-  final String photoVerso;
-  final String empreinte;
-  final String signature;
+  final String piece_type;
+  final String piece_numero;
+  final DateTime piece_delivrance_date;
+  final String piece_delivrance_lieu;
+  final String delivrance_by; // ✅ Nouveau champ
+  final String photo_recto;
+  final String photo_verso;
+  final String numero_chambre; // ✅ Nouveau champ
+  final Uint8List? signature;
   final String destination;
-  final DateTime dateEntree;
-  final DateTime dateSortie;
-  final DateTime dateEnregistrement;
-  final int utilisateurId;
+  final DateTime date_entree;
+  final DateTime date_sortie;
+  final int user_id; // ✅ ID du réceptionniste
+  final int nb_mineur; // ✅ Nombre de mineurs (par défaut 0)
 
-  Client({
-    this.id,
-    required this.nom,
-    required this.prenoms,
-    required this.naissanceDate,
-    required this.naissanceLieu,
-    required this.pere,
-    required this.mere,
-    required this.profession,
-    required this.domicile,
-    required this.adresse,
-    required this.telephone,
-    required this.nationalite,
-    required this.pieceType,
-    required this.pieceNumero,
-    required this.pieceDelivranceDate,
-    required this.pieceDelivranceLieu,
-    required this.photoRecto,
-    required this.photoVerso,
-    required this.empreinte,
-    required this.signature,
-    required this.destination,
-    required this.dateEntree,
-    required this.dateSortie,
-    required this.dateEnregistrement,
-    required this.utilisateurId,
-  });
+  Client(
+      {this.id,
+      required this.nom,
+      required this.prenoms,
+      required this.naissance_date,
+      required this.naissance_lieu,
+      required this.pere,
+      required this.mere,
+      required this.profession,
+      required this.domicile,
+      required this.adresse,
+      required this.telephone,
+      required this.nationalite,
+      required this.piece_type,
+      required this.piece_numero,
+      required this.piece_delivrance_date,
+      required this.piece_delivrance_lieu,
+      required this.delivrance_by,
+      required this.photo_recto,
+      required this.photo_verso,
+      required this.numero_chambre,
+      required this.signature,
+      required this.destination,
+      required this.date_entree,
+      required this.date_sortie,
+      required this.user_id,
+      required this.nb_mineur // Valeur par défaut
+      });
 
-  // ✅ Ajout de la méthode copyWith
   Client copyWith({
     int? id,
     String? nom,
     String? prenoms,
-    DateTime? naissanceDate,
-    String? naissanceLieu,
+    DateTime? naissance_date,
+    String? naissance_lieu,
     String? pere,
     String? mere,
     String? profession,
@@ -67,26 +71,27 @@ class Client {
     String? adresse,
     String? telephone,
     String? nationalite,
-    String? pieceType,
-    String? pieceNumero,
-    DateTime? pieceDelivranceDate,
-    String? pieceDelivranceLieu,
-    String? photoRecto,
-    String? photoVerso,
-    String? empreinte,
-    String? signature,
+    String? piece_type,
+    String? piece_numero,
+    DateTime? piece_delivrance_date,
+    String? piece_delivrance_lieu,
+    String? delivrance_by,
+    String? photo_recto,
+    String? photo_verso,
+    String? numero_chambre,
+    Uint8List? signature,
     String? destination,
-    DateTime? dateEntree,
-    DateTime? dateSortie,
-    DateTime? dateEnregistrement,
-    int? utilisateurId,
+    DateTime? date_entree,
+    DateTime? date_sortie,
+    int? userId,
+    int? nb_mineur,
   }) {
     return Client(
       id: id ?? this.id,
       nom: nom ?? this.nom,
       prenoms: prenoms ?? this.prenoms,
-      naissanceDate: naissanceDate ?? this.naissanceDate,
-      naissanceLieu: naissanceLieu ?? this.naissanceLieu,
+      naissance_date: naissance_date ?? this.naissance_date,
+      naissance_lieu: naissance_lieu ?? this.naissance_lieu,
       pere: pere ?? this.pere,
       mere: mere ?? this.mere,
       profession: profession ?? this.profession,
@@ -94,19 +99,22 @@ class Client {
       adresse: adresse ?? this.adresse,
       telephone: telephone ?? this.telephone,
       nationalite: nationalite ?? this.nationalite,
-      pieceType: pieceType ?? this.pieceType,
-      pieceNumero: pieceNumero ?? this.pieceNumero,
-      pieceDelivranceDate: pieceDelivranceDate ?? this.pieceDelivranceDate,
-      pieceDelivranceLieu: pieceDelivranceLieu ?? this.pieceDelivranceLieu,
-      photoRecto: photoRecto ?? this.photoRecto,
-      photoVerso: photoVerso ?? this.photoVerso,
-      empreinte: empreinte ?? this.empreinte,
+      piece_type: piece_type ?? this.piece_type,
+      piece_numero: piece_numero ?? this.piece_numero,
+      piece_delivrance_date:
+          piece_delivrance_date ?? this.piece_delivrance_date,
+      piece_delivrance_lieu:
+          piece_delivrance_lieu ?? this.piece_delivrance_lieu,
+      delivrance_by: delivrance_by ?? this.delivrance_by,
+      photo_recto: photo_recto ?? this.photo_recto,
+      photo_verso: photo_verso ?? this.photo_verso,
+      numero_chambre: numero_chambre ?? this.numero_chambre,
       signature: signature ?? this.signature,
       destination: destination ?? this.destination,
-      dateEntree: dateEntree ?? this.dateEntree,
-      dateSortie: dateSortie ?? this.dateSortie,
-      dateEnregistrement: dateEnregistrement ?? this.dateEnregistrement,
-      utilisateurId: utilisateurId ?? this.utilisateurId,
+      date_entree: date_entree ?? this.date_entree,
+      date_sortie: date_sortie ?? this.date_sortie,
+      user_id: user_id ?? this.user_id,
+      nb_mineur: nb_mineur ?? this.nb_mineur,
     );
   }
 
@@ -115,8 +123,8 @@ class Client {
       'id': id,
       'nom': nom,
       'prenoms': prenoms,
-      'naissance_date': naissanceDate.toIso8601String(),
-      'naissance_lieu': naissanceLieu,
+      'naissance_date': naissance_date.toIso8601String(),
+      'naissance_lieu': naissance_lieu,
       'pere': pere,
       'mere': mere,
       'profession': profession,
@@ -124,19 +132,20 @@ class Client {
       'adresse': adresse,
       'telephone': telephone,
       'nationalite': nationalite,
-      'piece_type': pieceType,
-      'piece_numero': pieceNumero,
-      'piece_delivrance_date': pieceDelivranceDate.toIso8601String(),
-      'piece_delivrance_lieu': pieceDelivranceLieu,
-      'photo_recto': photoRecto,
-      'photo_verso': photoVerso,
-      'empreinte': empreinte,
-      'signature': signature,
+      'piece_type': piece_type,
+      'piece_numero': piece_numero,
+      'piece_delivrance_date': piece_delivrance_date.toIso8601String(),
+      'piece_delivrance_lieu': piece_delivrance_lieu,
+      'delivrance_by': delivrance_by,
+      'photo_recto': photo_recto,
+      'photo_verso': photo_verso,
+      'numero_chambre': numero_chambre,
+      'signature': signature, // sera stocké comme BLOB
       'destination': destination,
-      'date_entree': dateEntree.toIso8601String(),
-      'date_sortie': dateSortie.toIso8601String(),
-      'date_enregistrement': dateEnregistrement.toIso8601String(),
-      'utilisateur_id': utilisateurId,
+      'date_entree': date_entree.toIso8601String(),
+      'date_sortie': date_sortie.toIso8601String(),
+      'user_id': user_id,
+      'nb_mineur': nb_mineur,
     };
   }
 
@@ -145,8 +154,8 @@ class Client {
       id: map['id'],
       nom: map['nom'],
       prenoms: map['prenoms'],
-      naissanceDate: DateTime.parse(map['naissance_date']),
-      naissanceLieu: map['naissance_lieu'],
+      naissance_date: DateTime.parse(map['naissance_date']),
+      naissance_lieu: map['naissance_lieu'],
       pere: map['pere'],
       mere: map['mere'],
       profession: map['profession'],
@@ -154,19 +163,22 @@ class Client {
       adresse: map['adresse'],
       telephone: map['telephone'],
       nationalite: map['nationalite'],
-      pieceType: map['piece_type'],
-      pieceNumero: map['piece_numero'],
-      pieceDelivranceDate: DateTime.parse(map['piece_delivrance_date']),
-      pieceDelivranceLieu: map['piece_delivrance_lieu'],
-      photoRecto: map['photo_recto'],
-      photoVerso: map['photo_verso'],
-      empreinte: map['empreinte'],
-      signature: map['signature'],
+      piece_type: map['piece_type'],
+      piece_numero: map['piece_numero'],
+      piece_delivrance_date: DateTime.parse(map['piece_delivrance_date']),
+      piece_delivrance_lieu: map['piece_delivrance_lieu'],
+      delivrance_by: map['delivrance_by'],
+      photo_recto: map['photo_recto'],
+      photo_verso: map['photo_verso'],
+      numero_chambre: map['numero_chambre'],
+      signature: map['signature'] != null
+          ? Uint8List.fromList(map['signature'])
+          : null,
       destination: map['destination'],
-      dateEntree: DateTime.parse(map['date_entree']),
-      dateSortie: DateTime.parse(map['date_sortie']),
-      dateEnregistrement: DateTime.parse(map['date_enregistrement']),
-      utilisateurId: map['utilisateur_id'],
+      date_entree: DateTime.parse(map['date_entree']),
+      date_sortie: DateTime.parse(map['date_sortie']),
+      user_id: map['user_id'],
+      nb_mineur: map['nb_mineur'] ?? 0,
     );
   }
 }
